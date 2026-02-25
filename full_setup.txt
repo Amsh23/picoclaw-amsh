@@ -15,14 +15,14 @@
     "model_name": "local-model",
     "model": "mistral-7b-instruct-v0.2.Q4_K_M.gguf",
     "api_base": "http://127.0.0.1:8080/v1",
-    "api_key": "none"
+    "api_key": "<API_KEY>"
   }
 ],
   "channels": {
     "telegram": {
       "enabled": true,
-      "token": "8133581643:AAHvHv3rvU2texEZJVBfliylaoHZrUllWRE",
-      "allow_from": ["5471707327"]
+      "token": "<TELEGRAM_TOKEN>",
+      "allow_from": ["<SECRET>"]
     }
   },
   "tools": {
