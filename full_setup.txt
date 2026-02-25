@@ -1,0 +1,83 @@
+========== PICOCLOW CONFIG ==========
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/home/meow/.picoclaw/workspace",
+      "restrict_to_workspace": false,
+      "model": "local-model",
+      "max_tokens": 8192,
+      "temperature": 0.7,
+      "max_tool_iterations": 20
+    }
+  },
+  "model_list": [
+  {
+    "model_name": "local-model",
+    "model": "mistral-7b-instruct-v0.2.Q4_K_M.gguf",
+    "api_base": "http://127.0.0.1:8080/v1",
+    "api_key": "none"
+  }
+],
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "token": "8133581643:AAHvHv3rvU2texEZJVBfliylaoHZrUllWRE",
+      "allow_from": ["5471707327"]
+    }
+  },
+  "tools": {
+    "shell": { "enabled": true },
+    "filesystem": { "enabled": true },
+    "process": { "enabled": true },
+    "web": {
+      "duckduckgo": {
+        "enabled": true,
+        "max_results": 5
+      }
+    }
+  },
+  "heartbeat": {
+    "enabled": true,
+    "interval": 30
+  },
+  "gateway": {
+    "host": "0.0.0.0",
+    "port": 18790
+  }
+}
+
+========== MODEL ==========
+mistral-7B/mistral-7b-instruct-v0.2.Q4_K_M.gguf
+
+========== LLAMA SERVER COMMAND ==========
+./build/bin/llama-server -m models/mistral-7B/mistral-7b-instruct-v0.2.Q4_K_M.gguf -c 4096 --port 8080 --host 127.0.0.1 --chat-template chatml --temp 0 --top-k 1 --seed 42
+
+========== SYSTEM INFO ==========
+Linux meow-virtualbox 6.18.9-arch1-2 #1 SMP PREEMPT_DYNAMIC Mon, 09 Feb 2026 17:16:33 +0000 x86_64 GNU/Linux
+
+               total        used        free      shared  buff/cache   available
+Mem:            19Gi       8.2Gi       3.9Gi       653Mi       7.9Gi        10Gi
+Swap:             0B          0B          0B
+
+Filesystem      Size  Used Avail Use% Mounted on
+dev             9.6G     0  9.6G   0% /dev
+run             9.6G  349M  9.3G   4% /run
+efivarfs        256K  137K  115K  55% /sys/firmware/efi/efivars
+/dev/sdb2        38G   27G  8.9G  75% /
+tmpfs           9.6G     0  9.6G   0% /dev/shm
+tmpfs           9.6G  276M  9.3G   3% /tmp
+none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+/dev/sdb1       2.0G  253M  1.8G  13% /efi
+tmpfs           2.0G  144K  2.0G   1% /run/user/1000
+/dev/sr0        4.0G  4.0G     0 100% /run/media/meow/NYARCH-GNOME_251218
+
+========== RUNNING PROCESSES ==========
+meow       59876  268 43.6 9518320 8767400 pts/0 Sl+  18:13  52:39 ./build/bin/llama-server -m models/mistral-7B/mistral-7b-instruct-v0.2.Q4_K_M.gguf -c 8192 --port 8080 --host 127.0.0.1 --chat-template chatml --temp 0 --top-k 1 --seed 42
+meow       59900  0.0  0.1 1987208 29264 pts/1   Sl+  18:13   0:00 picoclaw gateway
+meow       60802  3.5  1.0 299832 216100 pts/2   Sl+  18:28   0:09 /home/meow/picoclaw-venv/bin/python /home/meow/picoclaw-venv/bin/pip install chromadb sentence-transformers fastapi uvicorn requests
+
+========== WARP STATUS ==========
+Status update: Connected
+Network: healthy
+
